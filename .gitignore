@@ -1,0 +1,13 @@
+# Environnements virtuels et caches
+__pycache__/
+*.pyc
+.env
+
+# Dossier de données (très important pour ne pas bloquer GitHub)
+data/
+*.jsonl
+*.csv
+
+# Fichiers système
+.DS_Store
+Thumbs.db
