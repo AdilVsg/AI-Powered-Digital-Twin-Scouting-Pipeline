@@ -60,6 +60,76 @@ The primary semantic classification and filtering script.
      - Stage 2: An LLM-based semantic classification of the truncated README text.
   - Evaluates the repository to determine if it meets the strict criteria of a Level 3 Digital Twin, outputting the final validated dataset to a CSV file.
 
+## 🚀 Installation & Usage
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/AdilVsg/AI-Powered-Digital-Twin-Scouting-Pipeline.git
+cd AI-Powered-Digital-Twin-Scouting-Pipeline
+```
+
+### 2. Install dependencies
+
+It is recommended to use a virtual environment or a Docker container (especially for GPU support).
+
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Environment Setup
+
+Before running the pipeline, you must configure your API keys.  
+Export them as environment variables in your terminal.
+
+#### On Linux / macOS
+
+```bash
+export GITHUB_TOKEN="your_github_personal_access_token"
+export GROQ_API_KEY="your_groq_api_key"
+```
+
+#### On Windows (PowerShell)
+
+```powershell
+$env:GITHUB_TOKEN="your_github_personal_access_token"
+$env:GROQ_API_KEY="your_groq_api_key"
+```
+
+### 4. Run the pipeline
+
+#### Phase 1: Data Collection & Mass Mining
+
+Run the orchestrator to generate keywords and scrape GitHub repositories.  
+The raw data will be saved in:
+
+```text
+data/dataset_final.jsonl
+```
+
+Run the script:
+
+```bash
+python main.py
+```
+
+#### Phase 2: Semantic Filtering
+
+Once the dataset is collected, run the local LLM classifier to filter the repositories.  
+Make sure your GPU is available.
+
+The final results will be exported to:
+
+```text
+data/dataset_analyzed_local.csv
+```
+
+Run the analysis script:
+
+```bash
+python src/rdm_analyser.py
+```
+
 ## 🎯 Objective
 
 The objective of this project is to automate the extraction and filtering of GitHub repositories to isolate projects that strictly adhere to the definition of a Level 3 Digital Twin. This requires demonstrating an automated bidirectional data and control flow between a physical object and its virtual counterpart.
